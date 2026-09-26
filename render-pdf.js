@@ -97,7 +97,7 @@ async function generatePdf(template, schoolName, selectedIndices) {
         const label = "Category";
         const baseline = y - size;
         page.drawText(label, { x: PDF_MARGIN, y: baseline, size, font: bold, color: black });
-        const colX = PDF_MARGIN + 140;
+        const colX = PDF_MARGIN + 50;
         page.drawText(":- ", { x: colX, y: baseline, size, font: regular, color: black });
         const prefixWidth = regular.widthOfTextAtSize(":- ", size);
         const valueX = colX + prefixWidth;
