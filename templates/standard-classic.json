@@ -1,0 +1,137 @@
+{
+  "id": "Association-standard-classic",
+  "builtin": true,
+  "association": "Association-Standard",
+  "season": "Sub Jr–Senior",
+  "documentTitle": "TAEKWONDO ASSOCIATION KYORUGI STUDENTS LIST",
+  "categories": [
+    {
+      "ageGroup": "Sub Junior (8-11 years)",
+      "sex": "Boys",
+      "weights": [
+        "Under-18",
+        "Under-21",
+        "Under-23",
+        "Under-25",
+        "Under-27",
+        "Under-29",
+        "Under-32",
+        "Under-35",
+        "Under-38",
+        "Under-41",
+        "Under-44",
+        "Under-50"
+      ]
+    },
+    {
+      "ageGroup": "Sub Junior (8-11 years)",
+      "sex": "Girls",
+      "weights": [
+        "Under-16",
+        "Under-18",
+        "Under-20",
+        "Under-22",
+        "Under-24",
+        "Under-26",
+        "Under-29",
+        "Under-32",
+        "Under-35",
+        "Under-38",
+        "Under-41",
+        "Under-47"
+      ]
+    },
+    {
+      "ageGroup": "Cadet (12-14 years)",
+      "sex": "Boys",
+      "weights": [
+        "Under-33",
+        "Under-37",
+        "Under-41",
+        "Under-45",
+        "Under-49",
+        "Under-53",
+        "Under-57",
+        "Under-61",
+        "Under-65",
+        "Over-65"
+      ]
+    },
+    {
+      "ageGroup": "Cadet (12-14 years)",
+      "sex": "Girls",
+      "weights": [
+        "Under-29",
+        "Under-33",
+        "Under-37",
+        "Under-41",
+        "Under-44",
+        "Under-47",
+        "Under-51",
+        "Under-55",
+        "Under-59",
+        "Over-59"
+      ]
+    },
+    {
+      "ageGroup": "Junior (15-17 years)",
+      "sex": "Boys",
+      "weights": [
+        "Under-45",
+        "Under-48",
+        "Under-51",
+        "Under-55",
+        "Under-59",
+        "Under-63",
+        "Under-68",
+        "Under-73",
+        "Under-78",
+        "Over-78"
+      ]
+    },
+    {
+      "ageGroup": "Junior (15-17 years)",
+      "sex": "Girls",
+      "weights": [
+        "Under-42",
+        "Under-44",
+        "Under-46",
+        "Under-49",
+        "Under-52",
+        "Under-55",
+        "Under-59",
+        "Under-63",
+        "Under-68",
+        "Over-68"
+      ]
+    },
+    {
+      "ageGroup": "Senior (17+ years)",
+      "sex": "Boys",
+      "weights": [
+        "Under-54",
+        "Under-58",
+        "Under-63",
+        "Under-68",
+        "Under-74",
+        "Under-80",
+        "Under-87",
+        "Over-87"
+      ]
+    },
+    {
+      "ageGroup": "Senior (17+ years)",
+      "sex": "Girls",
+      "weights": [
+        "Under-46",
+        "Under-49",
+        "Under-53",
+        "Under-57",
+        "Under-62",
+        "Under-67",
+        "Under-73",
+        "Over-73"
+      ]
+    }
+  ]
+}

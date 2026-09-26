@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taekwondo Roster Builder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="app-header__mark" aria-hidden="true">
+    <span class="corner corner--chung">Chung</span><span class="corner corner--hong">Hong</span>
+  </div>
+  <div class="app-header__text">
+    <h1>Taekwondo Roster Builder</h1>
+    <p>Build weight-category student-list sheets for kyorugi &amp; poomsae registration — start from the SGFI set or your own federation's brackets.</p>
+  </div>
+</header>
+
+<main class="wizard">
+
+  <!-- STEP 1 : TEMPLATES -->
+  <section class="step" id="step-templates">
+    <div class="step__head">
+      <span class="step__num">1</span>
+      <h2>Choose a weight-category set</h2>
+    </div>
+
+    <div class="template-list" id="template-list"><!-- rendered by app.js --></div>
+
+    <div class="template-list__actions">
+      <button class="btn btn--ghost" id="btn-new-template" type="button">+ New set</button>
+      <label class="btn btn--ghost" for="import-file">Import JSON</label>
+      <input type="file" id="import-file" accept="application/json" hidden>
+    </div>
+  </section>
+
+  <!-- STEP 2 : SCHOOL + CATEGORIES -->
+  <section class="step" id="step-generate" hidden>
+    <div class="step__head">
+      <span class="step__num">2</span>
+      <h2>School &amp; categories</h2>
+    </div>
+
+    <label class="field">
+      <span class="field__label">Name of school</span>
+      <input type="text" id="school-name" placeholder="e.g. Sunrise Public School" autocomplete="off">
+    </label>
+
+    <div class="field">
+      <div class="field__label-row">
+        <span class="field__label">Include these pages</span>
+        <button class="link-btn" id="btn-toggle-all" type="button">Clear all</button>
+      </div>
+      <div class="category-checklist" id="category-checklist"><!-- rendered by app.js --></div>
+    </div>
+
+    <div class="step__head step__head--tight">
+      <span class="step__num">3</span>
+      <h2>Generate</h2>
+    </div>
+    <div class="generate-actions">
+      <button class="btn btn--ghost" id="btn-step-preview" type="button">Preview</button>
+      <button class="btn btn--primary" id="btn-gen-docx" type="button">Download .docx</button>
+      <button class="btn btn--primary" id="btn-gen-pdf" type="button">Download .pdf</button>
+    </div>
+    <p class="status" id="status" role="status" aria-live="polite"></p>
+  </section>
+
+</main>
+
+<!-- TEMPLATE EDITOR (overlay) -->
+<div class="editor-overlay" id="editor-overlay" hidden>
+  <div class="editor" role="dialog" aria-modal="true" aria-labelledby="editor-title">
+    <div class="editor__head">
+      <h2 id="editor-title">New weight-category set</h2>
+      <button class="icon-btn" id="btn-editor-close" type="button" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="editor__body">
+      <div class="editor__meta">
+        <label class="field">
+          <span class="field__label">Association / federation name</span>
+          <input type="text" id="editor-association" placeholder="e.g. My State Federation">
+        </label>
+        <label class="field">
+          <span class="field__label">Season / year</span>
+          <input type="text" id="editor-season" placeholder="e.g. 2027-28">
+        </label>
+      </div>
+      <label class="field">
+        <span class="field__label">Sheet title (printed at the top of every page)</span>
+        <input type="text" id="editor-doctitle" placeholder="TAEKWONDO KYORUGI AND POOMSAE STUDENTS LIST">
+      </label>
+
+      <div class="editor__categories" id="editor-categories"><!-- rendered by app.js --></div>
+
+      <button class="btn btn--ghost" id="btn-add-category" type="button">+ Add category page</button>
+    </div>
+
+    <div class="editor__foot">
+      <button class="btn btn--ghost" id="btn-editor-cancel" type="button">Cancel</button>
+      <button class="btn btn--primary" id="btn-editor-save" type="button">Save set</button>
+    </div>
+  </div>
+</div>
+
+<template id="tpl-category-card">
+  <div class="category-card">
+    <div class="category-card__row">
+      <label class="field field--inline">
+        <span class="field__label">Age group</span>
+        <input type="text" class="cat-age" placeholder="e.g. U-14 (Cadet)">
+      </label>
+      <label class="field field--inline">
+        <span class="field__label">Sex</span>
+        <select class="cat-sex">
+          <option>Boys</option>
+          <option>Girls</option>
+        </select>
+      </label>
+      <button class="icon-btn cat-remove" type="button" aria-label="Remove category">&times;</button>
+    </div>
+    <label class="field">
+      <span class="field__label">Weight classes — one per line, in order</span>
+      <textarea class="cat-weights" rows="6" placeholder="Under-18&#10;18 - 21&#10;21 - 23&#10;Over-41"></textarea>
+    </label>
+  </div>
+</template>
+
+<!-- PREVIEW (overlay) -->
+<div class="editor-overlay" id="preview-overlay" hidden>
+  <div class="editor editor--wide" role="dialog" aria-modal="true" aria-labelledby="preview-title">
+    <div class="editor__head">
+      <h2 id="preview-title">Preview</h2>
+      <button class="icon-btn" id="btn-preview-close" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div class="editor__body" id="preview-body"><!-- rendered by app.js --></div>
+    <div class="editor__foot">
+      <button class="btn btn--ghost" id="btn-preview-close-2" type="button">Close</button>
+      <button class="btn btn--primary" id="btn-preview-docx" type="button">Download .docx</button>
+      <button class="btn btn--primary" id="btn-preview-pdf" type="button">Download .pdf</button>
+    </div>
+  </div>
+</div>
+
+<!-- FILENAME PROMPT (overlay) -->
+<div class="editor-overlay" id="filename-overlay" hidden>
+  <div class="editor editor--narrow" role="dialog" aria-modal="true" aria-labelledby="filename-title">
+    <div class="editor__head">
+      <h2 id="filename-title">Name this file</h2>
+      <button class="icon-btn" id="btn-filename-close" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div class="editor__body">
+      <label class="field">
+        <span class="field__label">No school name was entered — what should the downloaded file be called?</span>
+        <input type="text" id="filename-input" autocomplete="off">
+      </label>
+    </div>
+    <div class="editor__foot">
+      <button class="btn btn--ghost" id="btn-filename-cancel" type="button">Cancel</button>
+      <button class="btn btn--primary" id="btn-filename-ok" type="button">Continue</button>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/docx.iife.js"></script>
+<script src="vendor/pdf-lib.min.js"></script>
+<script src="layout.js"></script>
+<script src="app-data.js"></script>
+<script src="render-docx.js"></script>
+<script src="render-pdf.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
