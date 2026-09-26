@@ -114,8 +114,8 @@
         // Built-ins are ready to go immediately — offer preview/download
         // right on the card, no need to step through "Use" first.
         actions.appendChild(previewBtn);
-        actions.appendChild(button("Download .docx", "btn btn--small btn--ghost", () => quickDownload(t.id, "docx")));
         actions.appendChild(button("Download .pdf", "btn btn--small btn--ghost", () => quickDownload(t.id, "pdf")));
+        actions.appendChild(button("Download .docx", "btn btn--small btn--ghost", () => quickDownload(t.id, "docx")));
         actions.appendChild(useBtn);
         actions.appendChild(dupBtn);
       } else {

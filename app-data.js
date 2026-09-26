@@ -16,7 +16,7 @@ const BUILT_IN_TEMPLATES = [
     builtin: true,
     association: "SGFI",
     season: "2026-27",
-    documentTitle: "TAEKWONDO KYORUGI AND POOMSAE STUDENTS LIST",
+    documentTitle: "TAEKWONDO SGFI KYORUGI STUDENTS LIST",
     categories: [
       {
         ageGroup: "U-14 (Cadet)",
